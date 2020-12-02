@@ -11,7 +11,7 @@ namespace test.models
     public class Utilisateurs
     {
         [Required]
-        public int CodeUtilisateur { get; set; }
+        public string CodeUtilisateur { get; set; }
         [Required]
         public string Nom { get; set; }
         public string Prenom { get; set; }

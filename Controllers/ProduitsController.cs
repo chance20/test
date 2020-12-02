@@ -20,16 +20,12 @@ namespace test.Controllers
             return dProduits.Access.PublierProduit(publierProduit);
         }
 
+        [HttpGet]
         public ObservableCollection<publierProduit> ListProduits(string codeUtilisateur)
         {
             ObservableCollection<publierProduit> list = new ObservableCollection<publierProduit>();
-            
-      
-            foreach (var item in dProduits.Access.ListeProduits(codeUtilisateur).Where(x=>x.DetailCommande.sens=="VENTE"))
-            {
-               
-               list.Add(item);
-            }
+            list = dProduits.Access.ListeProduits(codeUtilisateur);
+          
             return list;
         }
 

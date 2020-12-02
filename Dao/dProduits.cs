@@ -39,11 +39,11 @@ namespace test.Dao
                               ,[Monnaie])
                      VALUES
                            (
-                           '{publierProduit.Produits.CodeProduit}'
-                           ,'{publierProduit.Produits.description}'
-                           ,'{publierProduit.Produits.Photo}'
-                           ,'{publierProduit.Produits.designation}'
-                           ,Convert(money,{publierProduit.Produits.prixUnitaire}),'{publierProduit.Produits.Monnaie}')
+                           '{publierProduit.CodeProduit}'
+                           ,'{publierProduit.description}'
+                           ,'{publierProduit.Photo}'
+                           ,'{publierProduit.designation}'
+                           ,Convert(money,'{publierProduit.prixUnitaire.ToString()}'),'{publierProduit.Monnaie}')
                            ";
 
             string query1 = $@"INSERT INTO [test].[dbo].[Commande]
@@ -54,10 +54,10 @@ namespace test.Dao
                               ,[DateCommande])
                               VALUES
                            (
-                           '{publierProduit.Commande.CodeCommande}'
-                           ,'{publierProduit.Commande.CodeUtilisateur}'
-                           ,'{publierProduit.Commande.sens}'
-                           ,'{publierProduit.Commande.DateCommande}'
+                           '{publierProduit.CodeCommande}'
+                           ,'{publierProduit.CodeUtilisateur}'
+                           ,'{publierProduit.sens}'
+                           ,'{publierProduit.DateCommande}'
                           )
                            ";
 
@@ -72,11 +72,11 @@ namespace test.Dao
 
                               VALUES
                            (
-                           '{publierProduit.DetailCommande.CodeProduit}'
-                           ,'{publierProduit.DetailCommande.CodeCommande}'
-                           ,'{publierProduit.DetailCommande.QteCommandee}'
-                           ,Convert(money,{publierProduit.DetailCommande.MontantUnitaire})
-                           ,'{publierProduit.DetailCommande.sens}','{publierProduit.DetailCommande.Monnaie}')
+                           '{publierProduit.CodeProduit}'
+                           ,'{publierProduit.CodeCommande}'
+                           ,'{publierProduit.QteCommandee}'
+                           ,Convert(money,'{publierProduit.MontantUnitaire.ToString()}')
+                           ,'{publierProduit.sens}','{publierProduit.Monnaie}')
                            ";
 
 
@@ -99,6 +99,7 @@ namespace test.Dao
                     if (result.Equals("1") && result1.Equals("1") && result2.Equals("1"))
                     {
                         sqlTransaction.Commit();
+                        msg = "1";
                     }
                     
                     else
@@ -130,16 +131,16 @@ namespace test.Dao
         {
             publierProduit oProduits = new publierProduit();
 
-            oProduits.Produits.CodeProduit = rd["CodeProduit"].ToString();
-            oProduits.Produits.description = rd["description"].ToString();
-            oProduits.Produits.Photo = rd["Photo"].ToString();
-            oProduits.Produits.designation = rd["designation"].ToString();
-            oProduits.Produits.prixUnitaire = Convert.ToDouble(rd["prixUnitaire"]);
-            oProduits.Produits.Monnaie = rd["Monnaie"].ToString();
+            oProduits.CodeProduit = rd["CodeProduit"].ToString();
+            oProduits.description = rd["description"].ToString();
+            oProduits.Photo = rd["Photo"].ToString();
+            oProduits.designation = rd["designation"].ToString();
+            oProduits.prixUnitaire = Convert.ToDouble(rd["prixUnitaire"]);
+            oProduits.Monnaie = rd["Monnaie"].ToString();
 
-            oProduits.DetailCommande.QteCommandee = Convert.ToInt32(rd["Monnaie"]);
-            oProduits.DetailCommande.sens =rd["Monnaie"].ToString();
-            oProduits.DetailCommande.CodeCommande = rd["CodeCommande"].ToString();
+            oProduits.QteCommandee = Convert.ToInt32(rd["QteCommandee"]);
+            oProduits.sens =rd["sens"].ToString();
+            oProduits.CodeCommande = rd["CodeCommande"].ToString();
 
             return oProduits;
         }
@@ -168,11 +169,7 @@ namespace test.Dao
             DbConnection.Access.setCloseConnexion();
 
             return Listeproduits;
-        }
-
-
-
-       
+        }      
 
     }
 }

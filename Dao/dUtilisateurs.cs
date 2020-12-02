@@ -32,7 +32,7 @@ namespace test.Dao
                               ,[Prenom]
                               ,[NomUnique]
                               ,[dateNaissance]
-                              ,[Sens]
+                          
                               ,[photo]
                               ,[Password])
                      VALUES
@@ -41,7 +41,7 @@ namespace test.Dao
                            ,'{oUtilisateur.Nom}'
                            ,'{oUtilisateur.Prenom}'
                            ,'{oUtilisateur.NomUnique}'
-                           ,'{oUtilisateur.dateNaissance}' ,'{oUtilisateur.Photo}' ,'{oUtilisateur.password}'')
+                           ,'{oUtilisateur.dateNaissance}' ,'{oUtilisateur.Photo}' ,'{oUtilisateur.password}')
                            ";
 
 

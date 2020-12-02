@@ -28,12 +28,12 @@ namespace test.Dao
             string msg = "";
             string query = $@"UPDATE [test].[dbo].[DetailCommande]  
 
-                            SET [CodeProduit] = '{detailCommande.DetailCommande.CodeProduit}'
-                              ,[CodeCommande] = '{detailCommande.DetailCommande.CodeCommande}'
-                              ,[QteCommandee] ={detailCommande.DetailCommande.QteCommandee}
-                              ,[MontantUnitaire] = {detailCommande.DetailCommande.MontantUnitaire}
-                              ,[Sens] = '{detailCommande.DetailCommande.sens}'
-                              ,[Monnaie] = '{detailCommande.DetailCommande.Monnaie}'
+                            SET [CodeProduit] = '{detailCommande.CodeProduit}'
+                              ,[CodeCommande] = '{detailCommande.CodeCommande}'
+                              ,[QteCommandee] ={detailCommande.QteCommandee}
+                              ,[MontantUnitaire] = {detailCommande.MontantUnitaire}
+                              ,[Sens] = '{detailCommande.sens}'
+                              ,[Monnaie] = '{detailCommande.Monnaie}'
 
                               WHERE  [CodeProduit] ={detailCommande.CodeProduit}";
 
