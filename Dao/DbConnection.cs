@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Sql;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
+using MySql.Data;
 
 namespace test.Dao
 {
     public class DbConnection
     {
-        public SqlConnection Connexion = new SqlConnection(@"Server=FINANCES-PC;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;User ID=sa;Password='treso@123456'");
-        public SqlTransaction sqlTransaction;
+        public MySqlConnection Connexion = new MySqlConnection(@"Server=localhost;Database=mysql;User ID=root;Password='treso@123456'");
+        public MySqlTransaction sqlTransaction;
         private static object SyncRoot = new object();
 
             private static DbConnection instance;
@@ -23,7 +25,7 @@ namespace test.Dao
                 }
 
             }
-        public SqlConnection getConnexion()
+        public MySqlConnection getConnexion()
         {
             if (Connexion.State == System.Data.ConnectionState.Closed)
             {
@@ -34,7 +36,7 @@ namespace test.Dao
         }
 
 
-        public SqlConnection setCloseConnexion()
+        public MySqlConnection setCloseConnexion()
         {
             if (Connexion.State == System.Data.ConnectionState.Open)
             {
@@ -45,10 +47,10 @@ namespace test.Dao
         public DateTime getDateServer()
         {
 
-            string query = "select convert(datetime,GETDATE()) as madate";
-            using (SqlCommand cmd = new SqlCommand(query, Access.getConnexion()))
+            string query = "select convert(now(),date) as madate";
+            using (MySqlCommand cmd = new MySqlCommand(query, Access.getConnexion()))
             {
-                using (SqlDataReader monRd = cmd.ExecuteReader())
+                using (MySqlDataReader monRd = cmd.ExecuteReader())
                 {
                     monRd.Read();
                     return Convert.ToDateTime(monRd["madate"]);

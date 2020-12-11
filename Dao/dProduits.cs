@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using test.models;
@@ -81,19 +82,19 @@ namespace test.Dao
 
 
 
-            SqlConnection sqlConnection = DbConnection.Access.getConnexion();
+            MySqlConnection sqlConnection = DbConnection.Access.getConnexion();
 
-            using (SqlTransaction sqlTransaction = sqlConnection.BeginTransaction())
+            using (MySqlTransaction sqlTransaction = sqlConnection.BeginTransaction())
             {
                 try
                 {
-                    result = new SqlCommand(query, sqlConnection, sqlTransaction)
+                    result = new MySqlCommand(query, sqlConnection, sqlTransaction)
                       .ExecuteNonQuery() > 0 ? "1" : "0";
 
-                    result1 = new SqlCommand(query1, sqlConnection, sqlTransaction)
+                    result1 = new MySqlCommand(query1, sqlConnection, sqlTransaction)
                        .ExecuteNonQuery() > 0 ? "1" : "0";
 
-                    result2 = new SqlCommand(query2, sqlConnection, sqlTransaction)
+                    result2 = new MySqlCommand(query2, sqlConnection, sqlTransaction)
                        .ExecuteNonQuery() > 0 ? "1" : "0";
 
                     if (result.Equals("1") && result1.Equals("1") && result2.Equals("1"))
@@ -127,7 +128,7 @@ namespace test.Dao
 
 
 
-        public publierProduit Remplir(SqlDataReader rd)
+        public publierProduit Remplir(MySqlDataReader rd)
         {
             publierProduit oProduits = new publierProduit();
 
@@ -154,9 +155,9 @@ namespace test.Dao
                     join DetailCommande on produit.[CodeProduit] = DetailCommande.[CodeProduit]  
                     join Commande on DetailCommande.[CodeCommande] = Commande.[CodeCommande] where Commande.[CodeUtilisateur] = '{CodeUtilisateur}' ";
            
-            using (SqlCommand cmd = new SqlCommand(query, DbConnection.Access.getConnexion()))
+            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.Access.getConnexion()))
             {
-                using (SqlDataReader rd = cmd.ExecuteReader())
+                using (MySqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
                     {

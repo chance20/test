@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using test.models;
-using System.Data.SqlClient;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace test.Dao
 {
@@ -46,7 +47,7 @@ namespace test.Dao
 
 
 
-            using (SqlCommand cmd = new SqlCommand(query, DbConnection.Access.getConnexion()))
+            using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.Access.getConnexion()))
             {
                 try
                 {
@@ -78,7 +79,7 @@ namespace test.Dao
 
             try
             {
-                using (SqlCommand cmd = new SqlCommand(query, DbConnection.Access.getConnexion()))
+                using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.Access.getConnexion()))
                 {
                     if (cmd.ExecuteNonQuery() > 0)
                     {

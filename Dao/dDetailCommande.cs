@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using test.models;
@@ -39,7 +40,7 @@ namespace test.Dao
 
             try
             {
-                using (SqlCommand cmd = new SqlCommand(query, DbConnection.Access.getConnexion()))
+                using (MySqlCommand cmd = new MySqlCommand(query, DbConnection.Access.getConnexion()))
                 {
                     if (cmd.ExecuteNonQuery() > 0)
                     {
