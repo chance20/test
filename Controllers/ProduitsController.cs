@@ -20,6 +20,7 @@ namespace test.Controllers
             return dProduits.Access.PublierProduit(publierProduit);
         }
 
+
         [HttpGet]
         public ObservableCollection<publierProduit> ListProduits(string codeUtilisateur)
         {
@@ -27,6 +28,11 @@ namespace test.Controllers
             list = dProduits.Access.ListeProduits(codeUtilisateur);
           
             return list;
+        }
+        [HttpGet]
+        public string getProduit()
+        {
+            return "Bienvenue";
         }
 
     }

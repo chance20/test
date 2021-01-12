@@ -454,19 +454,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP ProBook\\.nuget\\packages\\": {}
+    "C:\\Users\\itcha\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP ProBook\\source\\repos\\test\\test.csproj",
+      "projectUniqueName": "C:\\Users\\itcha\\Source\\Repos\\chance20\\test\\test.csproj",
       "projectName": "test",
-      "projectPath": "C:\\Users\\HP ProBook\\source\\repos\\test\\test.csproj",
-      "packagesPath": "C:\\Users\\HP ProBook\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP ProBook\\source\\repos\\test\\obj\\",
+      "projectPath": "C:\\Users\\itcha\\Source\\Repos\\chance20\\test\\test.csproj",
+      "packagesPath": "C:\\Users\\itcha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\itcha\\Source\\Repos\\chance20\\test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP ProBook\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\itcha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -478,6 +478,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -489,6 +490,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "System.Data.SqlClient": {
             "target": "Package",
@@ -513,7 +515,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
